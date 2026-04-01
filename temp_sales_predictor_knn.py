@@ -10,8 +10,23 @@ mydata = pd.read_csv("temp_sales.csv")
 x = mydata[["X"]]
 y = mydata[["Y"]]
 
+# finding best k value
+
+rmse_values = []
+
+for i in range(2,100):
+    model = KNeighborsRegressor(n_neighbors = i)
+    model.fit(x,y)
+    y_pred = model.predict(x)
+    mse = mean_squared_error(y,y_pred)
+    rmse = np.sqrt(mse)
+    rmse_values.append(rmse)
+
+best_k = range(2,100) [np.argmin(rmse_values)]
+print("Best K = ", best_k)
+
 # model creation
-model = KNeighborsRegressor(n_neighbors = 3)
+model = KNeighborsRegressor(n_neighbors = best_k)
 model.fit(x,y)
 
 # predicting new value
