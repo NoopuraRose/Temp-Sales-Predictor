@@ -3,7 +3,8 @@ import pandas as pd
 from matplotlib import pyplot as plt 
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
-import numpy as np 
+import numpy as np
+import joblib
 
 # data set reading
 mydata = pd.read_csv("temp_sales.csv")
@@ -19,9 +20,8 @@ print("Coefficient = ", cf)
 intercept = model.intercept_
 print("Intercept = ", intercept)
 
-# predicting new value
-new_sales = model.predict([[160]])
-print("Predicted sales = ", new_sales)
+joblib.dump(model, "temp_sales_predictor_linreg.pkl")
+print("Training and model creation has successfully been completed.")
 
 # model evaluation
 y_pred = model.predict(x)

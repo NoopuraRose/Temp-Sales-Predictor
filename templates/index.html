@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Sales Predictor</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="blob"></div>
+<div class="blob2"></div>
+
+<div class="container">
+
+<h1>📈 Sales Prediction</h1>
+
+<p>Predict product sales from temperature.</p>
+
+<input
+id="temp"
+type="number"
+placeholder="Enter Temperature °C">
+
+<input
+type="range"
+id="slider"
+min="-10"
+max="50"
+value="20">
+
+<button onclick="predictSales()">
+Predict Sales
+</button>
+
+<div id="loading">
+<div class="spinner"></div>
+</div>
+
+<div class="result">
+
+<h2 id="sales">$0</h2>
+
+<p>Predicted Sales</p>
+
+</div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
